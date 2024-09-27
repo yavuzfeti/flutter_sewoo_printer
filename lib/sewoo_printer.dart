@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -128,8 +127,8 @@ class SewooPrinter {
       
       if(doc.downToUp!) {
         im.Image image = im.decodeImage( bytes )!;
-        im.Image rotatedImage = im.copyRotate( image , 180);
-        bytes  = im.encodePng(rotatedImage) as Uint8List;
+        im.Image rotatedImage = im.copyRotate( image , angle: 180);
+        bytes  = im.encodePng(rotatedImage);
       }
       await file.writeAsBytes( bytes );
     }
